@@ -1,0 +1,90 @@
+<section id="sold-vehicle-section" class="card">
+  <div class="section-header">
+    <h2><i class="fas fa-check-circle"></i> Sold Vehicle Management</h2>
+    <button id="toggle-sold-vehicle-form" class="btn btn-primary" type="button" (click)="toggleForm()">
+      <i class="fas fa-plus"></i> {{ showForm ? 'Hide Form' : 'Add Sold Vehicle' }}
+    </button>
+  </div>
+
+  <form id="sold-vehicle-form" [class.collapsed]="!showForm" [formGroup]="soldVehicleForm" (ngSubmit)="onSubmit()">
+    <div class="form-grid">
+      <input class="form-control" type="number" formControlName="vehicle_id" placeholder="Vehicle ID" required>
+      <select class="form-control" formControlName="vehicle_type" required>
+        <option value="">Select Type</option>
+        <option value="Car">Car</option>
+        <option value="Bike">Bike</option>
+        <option value="Truck">Truck</option>
+        <option value="SUV">SUV</option>
+        <option value="Van">Van</option>
+        <option value="Bus">Bus</option>
+        <option value="Other">Other</option>
+      </select>
+      <input class="form-control" type="text" formControlName="manufacturer" placeholder="Manufacturer" required>
+      <input class="form-control" type="text" formControlName="model" placeholder="Model" required>
+      <select class="form-control" formControlName="fuel_type" required>
+        <option value="">Fuel Type</option>
+        <option value="Petrol">Petrol</option>
+        <option value="Diesel">Diesel</option>
+        <option value="Electric">Electric</option>
+        <option value="Hybrid">Hybrid</option>
+        <option value="CNG">CNG</option>
+        <option value="LPG">LPG</option>
+        <option value="Other">Other</option>
+      </select>
+      <input class="form-control" type="text" formControlName="ownership" placeholder="Ownership" required>
+      <input class="form-control" type="date" formControlName="reg_data" placeholder="Registration Date" required>
+      <input class="form-control" type="text" formControlName="veh_number" placeholder="Vehicle Number" required>
+      <input class="form-control" type="number" formControlName="price" placeholder="Price" required>
+      <input class="form-control" type="date" formControlName="sold_date" placeholder="Sold Date" required>
+      <input class="form-control" type="text" formControlName="buyer_name" placeholder="Buyer Name" required>
+      <input class="form-control" type="text" formControlName="buyer_contact" placeholder="Buyer Contact" required>
+    </div>
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit"><i class="fas fa-save"></i> Save</button>
+      <button class="btn btn-secondary" type="button" (click)="cancelForm()"><i class="fas fa-times"></i> Cancel</button>
+    </div>
+  </form>
+
+  <div class="table-responsive">
+    <table id="sold-vehicle-table" class="data-table">
+      <thead>
+        <tr>
+          <th>Sold ID</th>
+          <th>Vehicle ID</th>
+          <th>Type</th>
+          <th>Manufacturer</th>
+          <th>Model</th>
+          <th>Fuel</th>
+          <th>Ownership</th>
+          <th>Reg. Date</th>
+          <th>Number</th>
+          <th>Price</th>
+          <th>Sold Date</th>
+          <th>Buyer Name</th>
+          <th>Buyer Contact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehicle of soldVehicles">
+          <td>{{ vehicle.sold_id }}</td>
+          <td>{{ vehicle.vehicle_id }}</td>
+          <td>{{ vehicle.vehicle_type }}</td>
+          <td>{{ vehicle.manufacturer }}</td>
+          <td>{{ vehicle.model }}</td>
+          <td>{{ vehicle.fuel_type }}</td>
+          <td>{{ vehicle.ownership }}</td>
+          <td>{{ vehicle.reg_data }}</td>
+          <td>{{ vehicle.veh_number }}</td>
+          <td>{{ vehicle.price | currency }}</td>
+          <td>{{ vehicle.sold_date }}</td>
+          <td>{{ vehicle.buyer_name }}</td>
+          <td>{{ vehicle.buyer_contact }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template [ngIf]="!soldVehicles.length">
+    <div class="empty-state">No sold vehicles yet. Add one using the button above.</div>
+  </ng-template>
+</section>

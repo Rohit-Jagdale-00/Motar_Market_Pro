@@ -1,0 +1,14 @@
+<header class="main-header">
+  <div class="container">
+    <div class="logo-title">
+      <span class="logo-icon"><i class="fas fa-car"></i></span>
+      <a routerLink="/" class="site-title">Motor Market <span class="pro-badge">Pro</span></a>
+    </div>
+    <nav class="main-nav" [class.active]="menuOpen">
+      <a routerLink="/about" routerLinkActive="active" class="nav-link"><i class="fas fa-info-circle"></i> About</a>
+      <a routerLink="/vehicles" routerLinkActive="active" class="nav-link"><i class="fas fa-car-side"></i> Vehicles</a>
+      <a routerLink="/sold-vehicles" routerLinkActive="active" class="nav-link"><i class="fas fa-check-circle"></i> Sold</a>
+    </nav>
+    <button class="mobile-menu-btn" type="button" (click)="toggleMenu()"><i class="fas fa-bars"></i></button>
+  </div>
+</header>

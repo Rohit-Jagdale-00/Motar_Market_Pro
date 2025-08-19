@@ -1,0 +1,88 @@
+<section id="vehicle-section" class="card">
+  <div class="section-header">
+    <h2><i class="fas fa-car-side"></i> Vehicle Management</h2>
+    <button id="toggle-vehicle-form" class="btn btn-primary" type="button" (click)="toggleForm()">
+      <i class="fas fa-plus"></i> {{ showForm ? 'Hide Form' : 'Add Vehicle' }}
+    </button>
+  </div>
+
+  <form id="vehicle-form" [class.collapsed]="!showForm" [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+    <div class="form-grid">
+      <select class="form-control" formControlName="vehicle_type" required>
+        <option value="">Select Type</option>
+        <option value="Car">Car</option>
+        <option value="Bike">Bike</option>
+        <option value="Truck">Truck</option>
+        <option value="SUV">SUV</option>
+        <option value="Van">Van</option>
+        <option value="Bus">Bus</option>
+        <option value="Other">Other</option>
+      </select>
+      <input class="form-control" type="text" formControlName="manufacturer" placeholder="Enter manufacturer" required>
+      <input class="form-control" type="text" formControlName="model" placeholder="Enter model" required>
+      <select class="form-control" formControlName="fuel_type" required>
+        <option value="">Select Fuel Type</option>
+        <option value="Petrol">Petrol</option>
+        <option value="Diesel">Diesel</option>
+        <option value="Electric">Electric</option>
+        <option value="Hybrid">Hybrid</option>
+        <option value="CNG">CNG</option>
+        <option value="LPG">LPG</option>
+        <option value="Other">Other</option>
+      </select>
+      <input class="form-control" type="text" formControlName="ownership" placeholder="Enter ownership" required>
+      <input class="form-control" type="date" formControlName="reg_data" placeholder="Registration Date" required>
+      <input class="form-control" type="text" formControlName="veh_number" placeholder="Enter vehicle number" required>
+      <input class="form-control" type="number" formControlName="price" placeholder="Enter price" required>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">
+        <i class="fas fa-save"></i> {{ isEditing ? 'Update Vehicle' : 'Save Vehicle' }}
+      </button>
+      <button class="btn btn-secondary" type="button" (click)="cancelForm()">
+        <i class="fas fa-times"></i> Cancel
+      </button>
+    </div>
+  </form>
+
+  <div class="table-responsive">
+    <table id="vehicle-table" class="data-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Type</th>
+          <th>Manufacturer</th>
+          <th>Model</th>
+          <th>Fuel</th>
+          <th>Ownership</th>
+          <th>Reg. Date</th>
+          <th>Number</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehicle of vehicles">
+          <td>{{ vehicle.vehicle_id }}</td>
+          <td>{{ vehicle.vehicle_type }}</td>
+          <td>{{ vehicle.manufacturer }}</td>
+          <td>{{ vehicle.model }}</td>
+          <td>{{ vehicle.fuel_type }}</td>
+          <td>{{ vehicle.ownership }}</td>
+          <td>{{ vehicle.reg_data }}</td>
+          <td>{{ vehicle.veh_number }}</td>
+          <td>{{ vehicle.price | currency }}</td>
+          <td class="table-actions">
+            <button class="action-btn edit-btn" (click)="editVehicle(vehicle)"><i class="fas fa-edit"></i> Edit</button>
+            <button class="action-btn delete-btn" (click)="deleteVehicle(vehicle.vehicle_id!)"><i class="fas fa-trash"></i> Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template [ngIf]="!vehicles.length">
+    <div class="empty-state">No vehicles yet. Add one using the button above.</div>
+  </ng-template>
+</section>
