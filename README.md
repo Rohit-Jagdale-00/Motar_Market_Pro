@@ -39,26 +39,26 @@ These instructions will get you a copy of the project up and running on your loc
 ### Installation
 
 1.  **Clone the repository:**
-    \`\`\`bash
+   ```
     git clone <repository_url>
     cd MotarMarketPro
-    \`\`\`
+   ```
 
 2.  **Configure the database:**
     *   Create a PostgreSQL database.
     *   Update the \`src/main/resources/application.properties\` file in the **backend** directory with your PostgreSQL database connection details (URL, username, password).
 
 3.  **Build the Spring Boot Backend:**
-    \`\`\`bash
+    ```
     # Navigate to the backend project root (e.g., MotarMarketPro/backend)
     ./mvnw clean install
-    \`\`\`
+    ```
 
 4.  **Install Angular Frontend Dependencies:**
-    \`\`\`bash
+    ```
     # Navigate to the Angular project root (e.g., MotarMarketPro/frontend/MotarMarketProAngular)
     npm install
-    \`\`\`
+    ```
 
 ---
 
@@ -68,10 +68,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 You can run the Spring Boot application using Maven:
 
-\`\`\`bash
+```
 # Navigate to the backend project root
 ./mvnw spring-boot:run
-\`\`\`
+```
 
 The backend API will typically be accessible at \`http://localhost:8080\`.
 
@@ -79,10 +79,10 @@ The backend API will typically be accessible at \`http://localhost:8080\`.
 
 To serve the Angular web interface:
 
-\`\`\`bash
+```
 # Navigate to the Angular project root
 ng serve
-\`\`\`
+```
 
 The web interface will be accessible at: \`http://localhost:4200\` (or another port if 4200 is in use).
 
@@ -90,7 +90,7 @@ The web interface will be accessible at: \`http://localhost:4200\` (or another p
 
 ## Project Structure
 
-\`\`\`
+```
 MotarMarketPro/
 ├── backend/ # Spring Boot Application
 │   ├── src/
@@ -117,7 +117,7 @@ MotarMarketPro/
         ├── angular.json            # Angular CLI configuration
         ├── package.json            # Node.js dependencies
         └── tsconfig.json           # TypeScript configuration
-\`\`\`
+```
 
 ---
 
