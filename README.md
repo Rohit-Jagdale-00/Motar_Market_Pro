@@ -1,6 +1,4 @@
-#!/bin/bash
 
-cat << EOF
 # 🚗 MotarMarketPro - Angular & Spring Boot Application
 
 MotarMarketPro is a full-stack application designed to manage vehicle inventory and sold vehicle records. It features a Spring Boot backend providing a RESTful API and an Angular frontend for a dynamic and interactive user experience.
@@ -199,4 +197,3 @@ Once both the backend and frontend applications are running, open your web brows
 
 **Name:** Rohit Jagdale  
 **Email:** rohitjagdale0606@gmail.com
-EOF
